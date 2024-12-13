@@ -3,7 +3,9 @@
 const burgerMenu = document.querySelector(".burgerMenu");
 const headerNav = document.querySelector(".headerNav");
 const headerNavLinks = document.querySelector(".headerNavLinks");
+// Variable for Max Scroll, Value is in "PX"
 const scrollThreshold = 100;
+// Usable for toggleable containers.
 const toggleContainer = document.querySelector(".toggleable")
 
 // Toggle burger and headerNav on click
@@ -28,6 +30,7 @@ window.addEventListener("resize", () => {
   }
 });
 
+// Adds / Removes visibility on header when scrolling past 100px in height.
 window.addEventListener('scroll', () => {
   if (window.scrollY > scrollThreshold) {
     headerNav.classList.add("visible");

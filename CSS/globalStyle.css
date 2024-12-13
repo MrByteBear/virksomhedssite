@@ -32,7 +32,9 @@
   --color-tertiary: #81A7AB;        /* Bruges som header ? / accent farve */
   --color-neutral: #CDD3D5;         /* Bruges som en neutral farve */
   --color-text-primary: #000000;    /* Bruges som font-farve, sort */
-  --color-text-secondary: #FFFFFF;  /* Btuges som font-farve, hvid */
+  --color-text-secondary: #FFFFFF;  /* Bruges som font-farve, hvid */
+  --color-shadow-60: #00000099;     /* Bruges som box-shadow farve, sort, 60% transperant */
+  --color-shadow-30: #0000004d;     /* Bruges som box-shadow farve, sort, 30% transperant */
 
   /* Font Variabler */
   --font-family-sans: "Josefin Sans", sans-serif;
@@ -230,29 +232,45 @@ button:hover {
   top: 1%;
 }
 
+/* Siger at heroimage i headeren skal optage 100% width. */
 header video {
   width: 100%;
 }
 
 /* [Navbar] */
+/* 
+  Sætter dens position relativ til dens parent-container. 
+  Giver den 100% width. Og 2rem padding (--space-xl).
+  Gør den usynlig, og tilføjer et transition animation på, for "smoothness"
+*/
 .headerNav {
-  width: 100%;
-  padding: 2rem;
-  background-color: var(--color-tertiary);
   position: relative;
+  width: 100%;
+  padding: var(--space-xl);
+  background-color: var(--color-tertiary);
   opacity: 0%;
   transition: 0.4s linear;
 }
 
+/* Bliver tilføjet (.visible) via JS, til at gøre den synlig, når man scroller ned. */
 .headerNav.visible {
   opacity: 100%;
   transition: 0.4s linear;
 }
 
+/* Skjuler kontaineren med links, så den først er synlig, når man klikker på burger ikonet */
 .headerNavLinks {
   display: none;
 }
 
+/* Nedenfor styling bliver brugt, når headerNav (.headerNav.active) er aktiveret via JS.  */
+
+/* 
+  Sætter dens position til at være absolut, og placere den 100% af dens parent container, i top
+  Giver den 100% width. Giver den flex, center, col hhv. display og orientering.
+  Giver den en baggrundsfarve, en diskret box-shadow.
+  Gør at den placeres ovenover alt.
+*/
 .headerNav.active .headerNavLinks {
   position: absolute;
   top: 100%;
@@ -262,53 +280,77 @@ header video {
   align-items: center;
   flex-direction: column;
   background-color: var(--color-secondary);
-  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.60);
+  box-shadow: 0rem var(--space-xs) var(--space-xs) var(--color-shadow-60);
   z-index: 500;
 }
 
+/* 
+  Gør så selve links i headerNavLinks listen, er en inline-block element, og optager 50% width
+  Giver dem en padding
+  - Det gør så headerNav links er mere klikbar
+  Giver teksten en font-farve og størrelse.
+*/
 .headerNav.active .headerNavLinks a {
-  margin: 1.5rem 0rem 1.5rem 0rem;
-}
-
-.headerNav.active .headerNavLinks li {
-  width: 100%;
-  padding: 3rem 0.5rem;
-  text-align: center;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.30);
-}
-
-.headerNav.active .headerNavLinks li a {
+  display: inline-block;
+  width: 50%;
+  padding: var(--space-lg) 0rem;
   color: var(--color-text-secondary);
   font-size: var(--fs-lg);
 }
 
+/* 
+  Gør så listen (li) optager hele width, teksten indenfor er centreret.
+  Og giver en border-bottom + padding.
+*/
+.headerNav.active .headerNavLinks li {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid var(--color-shadow-30);
+  padding: var(--space-lg);
+}
 
 /* [Burger Menu] */
+/* 
+  Selve burger menu knappen. Sætter dens position til at være absolut.
+  Placere den fra højre side af, forskudt med 2%.
+  Transform: linjen gør så den placeres midt før, relativ til højden af parent-containeren.
+  Giver kassen en width (height er auto)
+  Giver den en padding, så linjerne ikke går helt til kanterne.
+  Padding, farve, og gør så der er en cursor: pointer, så man kan se, at man kan klikke på den.
+*/
 .burgerMenu {
-  display: block;
-  width: 4rem;
-  cursor: pointer;
-  background-color: var(--color-secondary);
-  padding: 0.5rem 0.5rem;
   position: absolute;
   right: 2%;
   transform: translateY(-50%);
+  display: block;
+  width: var(--space-3xl);
+  padding: var(--space-sm);
+  background-color: var(--color-secondary);
+  cursor: pointer;
 }
 
+/* 
+  Styling til selve burgerMenu linjerne.
+*/
 .burgerMenu .burgerLine {
-  height: 0.25rem;
+  height: var(--space-xs);
   background-color: var(--color-text-secondary);
   transition: 0.2s linear;
 }
 
+/* Forskyder linjerne en smule i aktiv-tilstand, så de er mere centreret */
 .burgerMenu.active {
   padding-left: 0.6rem;
 }
 
+/* Gør så der er mellemrum imellem linjerne (på nær bunden) */
 .burgerMenu .burgerLine:not(:last-child) {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-sm);
 }
 
+/* 
+  Nedenfor er bare animationen af burger-linjerne, efter de er klikket på.
+*/
 .burgerMenu.active .burgerLine:nth-child(1) {
   transform-origin: left;
   transform: rotate(30deg);

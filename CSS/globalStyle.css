@@ -1,0 +1,423 @@
+/*
+
+*****************     Indholdsfortegnelse     *****************
+
+- Brug CTRL + F eller Command (⌘) + F og "[NAME]" uden ""
+- Klik herefter på den nedad-vendte pil " ↓ " til at komme frem til det.
+
+- Ex: Command + F. Indtast [Variabler]. Klik ↓ ned.
+
+* [Variabler]
+* [Resets]
+* [Generel Styling]
+* [Header]
+* [Navbar]
+* [Burger Menu]
+* [Footer]
+* [Ikoner]
+* [Flex Layouts]
+* [Desktop CSS]
+* [Desktop General Styling]
+* [Desktop Header + Navbar]
+
+*/
+
+/* [Variabler] */
+/* Vores Variabler */
+:root {
+
+  /* Farver */
+  --color-primary: #F9F9F9;         /* Bruges som sidernes baggrundsfarve */
+  --color-secondary: #3C5461;       /* Bruges som header ? / footer / accent farve */
+  --color-tertiary: #81A7AB;        /* Bruges som header ? / accent farve */
+  --color-neutral: #CDD3D5;         /* Bruges som en neutral farve */
+  --color-text-primary: #000000;    /* Bruges som font-farve, sort */
+  --color-text-secondary: #FFFFFF;  /* Btuges som font-farve, hvid */
+
+  /* Font Variabler */
+  --font-family-sans: "Josefin Sans", sans-serif;
+  --font-family-serif: "Merriweather", serif; 
+
+  /* Vores font-størrelser, genereret med en type-scale generator.
+     Font-størrelserne er skalerbar afhængig af skærmbredde, ved brug af clamp().
+     Link: https://anon.to/t1VdOG  
+     ( Linker til https://www.fluid-type-scale.com/ og de indstillinger som jeg brugte, det originale link er for langt, så har forkortet det ) */
+  --fs-sm: clamp(0.8rem, 0.05vi + 0.79rem, 0.84rem);
+  --fs-base: clamp(1rem, 0.16vi + 0.97rem, 1.13rem);
+  --fs-md: clamp(1.25rem, 0.31vi + 1.19rem, 1.5rem);
+  --fs-lg: clamp(1.56rem, 0.55vi + 1.45rem, 2rem);
+  --fs-xl: clamp(1.95rem, 0.89vi + 1.78rem, 2.66rem);
+  --fs-2xl: clamp(2.44rem, 1.39vi + 2.16rem, 3.55rem);
+  --fs-3xl: clamp(3.05rem, 2.1vi + 2.63rem, 4.73rem);
+  --fs-4xl: clamp(3.81rem, 3.12vi + 3.19rem, 6.31rem);
+
+  /* Afstands variabler */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 5rem;
+
+}
+
+/* Vores Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+/* [Resets] */
+/* Globale Resets / Tilføjelser */
+
+/* Gør så ting forbliver i border-box, med padding og margin, og ikke bliver "skubbet ud" fra dens parent-container */
+*, *::before, *::after{
+  box-sizing: border-box; 
+}
+
+/* Resetter alle margin og padding til 0 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth Scrolling, kan undlades */
+html:focus-within{
+    scroll-behavior: smooth; 
+}
+
+/* Resetter input, knap, tekst-områder (tænk besked-felter i en kontaktformular) select (tænk "vælg-emne" dropdown-muligheder)*/
+input, button, textarea, select {
+  appearance: auto;
+  display: inline-block;
+  border: none;
+  background: none;
+  outline: none;
+  padding-block: 0;
+  padding-inline: 0;
+}
+
+/****** Fjerner "up / ned" ikonet på input af type="number" ********/
+/* For Chrome, Safari, og Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Fjerner fokus-effekten (outline-effekt) af input, select, knap og tekst-område elementer */
+input:focus, select:focus, button:focus, textarea:focus {
+  outline: none;
+}
+
+/* En små-ting, gør så understregen på links når text-decoration er enabled, ikke går i gennem bogstaver som "g" */
+/* Sætter text-decoration til "none" som standard */
+a {
+  text-decoration-skip-ink: auto;
+  text-decoration: none;
+}
+
+/* Fjerner det irriterende "blå" font-farve på links der er besøgte. Burde fikse det */
+a:visited, a:active, a:hover {
+  color: inherit;
+}
+
+/* Fjerner " * " bulletpoints fra list-elementer */
+li {
+  list-style: none;
+}
+
+/* Gør så img-elementer optager deres fulde størrelse, dækker det hele, og er en block-type element */
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Standard styling for <i> ikoner */
+/* Gør så ikoner ikke starter på ny-linje, men kan placeres ved siden af ting.
+   Gør så billedet i ikonet bevare dens højde-bredde forhold i størrelse
+   og så den ikke gentager sig, + er placeret midt for.*/
+i {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* [Generel Styling] */
+/* General styling regelsæts*/
+
+/* Body 
+   - Gør så der ikke er sidelæns-scroll.
+   - Gør så hele html body (header, main, footer) minimum højde er skærmens totale viewport.
+   - Gør så det optager hele height, width.
+*/
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+/* Sætter baggrundsfarven på indholdet imellem header og footer til vores mættet hvid */
+.main {
+  background-color: var(--color-primary);
+}
+
+/* Gør så Headings og Body-tekst kan skrympes, hvis vindue-størrelsen ændres på, så det ikke "forsvinder" */
+/* Sætter også linjehøjde til 1.5x tekststørrelsen, som anvist i Interfacedesign bogen. */
+h1, h2, h3, h4, h5, h6, p {
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 150%;
+}
+
+/* Links og Headings Font Family */
+a, h1, h2, h3, h4, h5, h6, li {
+  font-family: var(--font-family-sans);
+}
+
+/* Bodytext Font Family*/
+p {
+  font-family: var(--font-family-serif);
+}
+
+/* Font styling for input, button, select, textarea */
+input, button, select, textarea {
+  font-family: var(--font-family-sans);
+}
+
+/* Label styling */
+label {
+  display: inline-block;
+  font-family: var(--font-family-serif);
+}
+
+/* Sætter alle hovers på buttons til at være pointers */
+button:hover {
+  cursor: pointer;
+}
+
+/* Bruges ifm. JS, skjuler indhold */
+.toggleable {
+  display: none;
+}
+
+/* Bruges ifm. JS, viser indhold når det er i dens aktiveret state når man bruger classList.toggle */
+.toggleable.active {
+  display: block;
+}
+
+/* Bruges ifm. JS, skjuler indhold */
+.showElement {
+  display: block;
+}
+
+/* Bruges ifm. JS, viser indhold */
+.hideElement {
+  display: none;
+}
+
+/* [Header] */
+.logo {
+  position: absolute;
+  top: 1%;
+}
+
+header video {
+  width: 100%;
+}
+
+/* [Navbar] */
+.headerNav {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--color-tertiary);
+  position: relative;
+  opacity: 0%;
+  transition: 0.4s linear;
+}
+
+.headerNav.visible {
+  opacity: 100%;
+  transition: 0.4s linear;
+}
+
+.headerNavLinks {
+  display: none;
+}
+
+.headerNav.active .headerNavLinks {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-secondary);
+  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.60);
+  z-index: 500;
+}
+
+.headerNav.active .headerNavLinks a {
+  margin: 1.5rem 0rem 1.5rem 0rem;
+}
+
+.headerNav.active .headerNavLinks li {
+  width: 100%;
+  padding: 3rem 0.5rem;
+  text-align: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.30);
+}
+
+.headerNav.active .headerNavLinks li a {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-lg);
+}
+
+
+/* [Burger Menu] */
+.burgerMenu {
+  display: block;
+  width: 4rem;
+  cursor: pointer;
+  background-color: var(--color-secondary);
+  padding: 0.5rem 0.5rem;
+  position: absolute;
+  right: 2%;
+  transform: translateY(-50%);
+}
+
+.burgerMenu .burgerLine {
+  height: 0.25rem;
+  background-color: var(--color-text-secondary);
+  transition: 0.2s linear;
+}
+
+.burgerMenu.active {
+  padding-left: 0.6rem;
+}
+
+.burgerMenu .burgerLine:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.burgerMenu.active .burgerLine:nth-child(1) {
+  transform-origin: left;
+  transform: rotate(30deg);
+  transition: 0.2s linear;
+}
+
+.burgerMenu.active .burgerLine:nth-child(2) {
+  opacity: 0;
+  transition: 0.15s linear;
+}
+
+.burgerMenu.active .burgerLine:nth-child(3) {
+  transform-origin: left;
+  transform: rotate(-30deg);
+  transition: 0.2s linear;
+}
+
+
+/* [Footer] */
+
+/* [Ikoner] */
+.logoIcon {
+  width: clamp(2rem, 9.25vw + 2rem, 9.375rem);
+  height: clamp(2rem, 9.25vw + 2rem, 9.375rem);
+  background-image: url(../IMGS/Logo.svg);
+}
+
+.facebookIcon {
+  width: 3.125rem;
+  height: 3.125rem;
+  background-image: url(../IMGS/SOME/facebook-ikon.svg);
+}
+
+.instagramIcon {
+  width: 3.125rem;
+  height: 3.125rem;
+  background-image: url(../IMGS/SOME/instagram-ikon.svg);
+}
+
+.xIcon {
+  width: 3.125rem;
+  height: 3.125rem;
+  background-image: url(../IMGS/SOME/x-twitter-ikon.svg);
+}
+
+/* [Flex Layouts] */
+
+.flex_col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex_col_center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex_row {
+  display: flex;
+}
+
+.flex_row_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex_row_spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex_row_center_spaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* [Desktop CSS] */
+@media screen and (min-width: 801px) {
+
+  /* [Desktop General Styling] */
+  /* Sætter alt i body (header, main, footer) til at være flex, og opsættes i kolonne. */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 
+     Gør så main-elementen fyldes ud, 
+     for at undgå en underlig fejl med white-space under footeren i korte sider 
+  */
+  main {
+    flex: 1;
+  }
+
+  /* [Desktop Header + Navbar] */
+  .burgerMenu {
+    display: none;
+  }
+
+  .headerNav {
+    display: flex;
+  }
+
+  .headerNavLinks {
+    display: flex;
+    align-items: center;
+  }
+
+}

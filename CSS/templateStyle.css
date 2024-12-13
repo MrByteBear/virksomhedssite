@@ -315,7 +315,7 @@ header p:hover, header p:hover span {
 
 /********** [ BURGER MENU MOBILE ] *******/
 
-/* hides desktop menu */
+/* hides desktop menu links */
 .headerNavLinks {
   display: none;
 }
@@ -336,17 +336,17 @@ header p:hover, header p:hover span {
   transition: 0.2s linear;
 }
 
-.burger.active .burgerLine:nth-child(1) {
+.burgerMenu.active .burgerLine:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
   transition: 0.2s linear;
 }
 
-.burger.active .burgerLine:nth-child(2) {
+.burgerMenu.active .burgerLine:nth-child(2) {
   opacity: 0;
   transition: 0.15s linear;
 }
 
-.burger.active .burgerLine:nth-child(3) {
+.burgerMenu.active .burgerLine:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
   transition: 0.2s linear;
 }

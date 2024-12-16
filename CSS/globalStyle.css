@@ -116,8 +116,11 @@ input:focus, select:focus, button:focus, textarea:focus {
   outline: none;
 }
 
-/* En små-ting, gør så understregen på links når text-decoration er enabled, ikke går i gennem bogstaver som "g" */
-/* Sætter text-decoration til "none" som standard */
+/* 
+  * En små-ting, gør så understregen på links når text-decoration er enabled, 
+  - ikke går i gennem bogstaver som "g"
+  * Sætter text-decoration til "none" som standard 
+*/
 a {
   text-decoration-skip-ink: auto;
   text-decoration: none;
@@ -140,10 +143,12 @@ img {
   object-fit: cover;
 }
 
-/* Standard styling for <i> ikoner */
-/* Gør så ikoner ikke starter på ny-linje, men kan placeres ved siden af ting.
-   Gør så billedet i ikonet bevare dens højde-bredde forhold i størrelse
-   og så den ikke gentager sig, + er placeret midt for.*/
+/* 
+  * Standard styling for <i> ikoner.
+  * Gør så ikoner ikke starter på ny-linje, men kan placeres ved siden af ting.
+  * Gør så billedet i ikonet bevare dens højde-bredde forhold i størrelse
+  - og så den ikke gentager sig, + er placeret midt for.
+*/
 i {
   display: inline-block;
   background-size: contain;
@@ -152,23 +157,36 @@ i {
 }
 
 /* [Generel Styling] */
-/* General styling regelsæts*/
-
-/* Body 
-   - Gør så der ikke er sidelæns-scroll.
-   - Gør så hele html body (header, main, footer) minimum højde er skærmens totale viewport.
-   - Gør så det optager hele height, width.
-*/
+/* 
+  * Gør så der ikke er sidelæns-scroll.
+  * Gør så det optager hele height, width.
+  * Gør så hele body (header, main, footer) har display flex, og i kolonne retning. 
+  * Minimum højde er 100% viewport højde (skærmens y-akse)
+  */
 body {
   overflow-x: hidden;
-  min-height: 100vh;
   height: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Sætter baggrundsfarven på indholdet imellem header og footer til vores mættet hvid */
-.main {
+
+/*
+  * Gør så main-elementen fyldes ud, 
+  - for at undgå en underlig fejl med white-space under footeren i korte sider.
+  - Det virker, når det bruges sammen med ovenstående kode for (html, body) og (body).
+  * Giver main et padding, for at give spacing og skabe en lille smule white-space.
+  * Sætter baggrundsfarven på indholdet imellem header og footer til vores mættet hvid
+*/
+main {
+  padding: 1rem;
   background-color: var(--color-primary);
+  flex: 1;
+}
+
+header {
+  padding: 1rem 1rem 0rem 1rem;
 }
 
 /* Gør så Headings og Body-tekst kan skrympes, hvis vindue-størrelsen ændres på, så det ikke "forsvinder" */
@@ -227,55 +245,99 @@ button:hover {
 }
 
 /* [Header] */
-.logo {
-  position: absolute;
-  top: 1%;
+/* Sætter selve headeren's pos til at være relativ til parent-container.*/
+header {
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
-/* Siger at heroimage i headeren skal optage 100% width. */
+/* 
+  * Siger at heroimage i headeren skal optage 100% width. 
+  * Giver den en lille border-radius, så den matcher nav-baren  
+*/
 header video {
   width: 100%;
+  border-radius: var(--space-xl);
 }
 
 /* [Navbar] */
 /* 
-  Sætter dens position relativ til dens parent-container. 
-  Giver den 100% width. Og 2rem padding (--space-xl).
-  Gør den usynlig, og tilføjer et transition animation på, for "smoothness"
+  * Sætter dens position til absolute. 
+  * Giver den 100% - 2rem width. Og 1rem padding (--space-md).
+  * Giver kontaineren en border-radius.
+  * Giver den display: flex, med center på y-aksen (align-items) 
+  * og space-between på x-aksen (justify-content).
+  * Tilføjer et transition animation på, for "smoothness", når den skal dukke op igen efter animation.
 */
+
 .headerNav {
-  position: relative;
-  width: 100%;
-  padding: var(--space-xl);
-  background-color: var(--color-tertiary);
-  opacity: 0%;
-  transition: 0.4s linear;
-}
-
-/* Bliver tilføjet (.visible) via JS, til at gøre den synlig, når man scroller ned. */
-.headerNav.visible {
+  position: absolute;
+  width: calc(100% - var(--space-xl));
+  padding: 0rem var(--space-md);
+  border-radius: var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   opacity: 100%;
-  transition: 0.4s linear;
+  transition: all 0.4s ease-in-out;
 }
 
-/* Skjuler kontaineren med links, så den først er synlig, når man klikker på burger ikonet */
-.headerNavLinks {
+/* Bliver tilføjet (.visible) via JS, til at gøre den usynlig, når man scroller 50px ned. */
+.headerNav.visible {
+  opacity: 0%;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Bliver tilføjet via JS, til at give den en baggrund + box-shadow med mouseover */
+.headerNav.mouseOver {
+  background-color: var(--color-tertiary);
+  box-shadow: 0rem var(--space-xs) var(--space-xs) var(--color-shadow-60);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Gør så alle ikoner har pointers når man har musen over dem. */
+.headerNav i {
+  cursor: pointer;
+}
+
+/* En lille hover-effekt på alle links. */
+.headerNav a:hover {
+  color: var(--color-neutral);
+}
+
+/* Layout styling for mobile-containeren i højre side af navbaren */
+.headerNavMobile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Skjuler Desktop navbar kontainere */
+.headerNavLeftDesktop, .headerNavRightDesktop {
   display: none;
 }
 
-/* Nedenfor styling bliver brugt, når headerNav (.headerNav.active) er aktiveret via JS.  */
+/* Skjuler kontaineren med links, så den først er synlig, når man klikker på burger ikonet */
+.headerNavMobile .headerNavLinks {
+  display: none;
+}
+
+/* Nedenfor styling bliver brugt, når headerNavMobile (.headerNavMobile.active) er aktiveret via JS. */
 
 /* 
-  Sætter dens position til at være absolut, og placere den 100% af dens parent container, i top
-  Giver den 100% width. Giver den flex, center, col hhv. display og orientering.
-  Giver den en baggrundsfarve, en diskret box-shadow.
-  Gør at den placeres ovenover alt.
+  * Sætter dens position til at være absolut, og placere den 100% af dens parent container, i top.
+  * Giver den 100% width. Giver den flex, center, col til hhv. display og orientering.
+  * Giver containeren et border-radius til dens kontainere
+  * Giver den en baggrundsfarve, en diskret box-shadow.
+  * Gør at den placeres ovenover alt.
 */
-.headerNav.active .headerNavLinks {
+.headerNavMobile.active .headerNavLinks {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
+  border-radius: var(--space-xl);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -285,44 +347,34 @@ header video {
 }
 
 /* 
-  Gør så selve links i headerNavLinks listen, er en inline-block element, og optager 50% width
-  Giver dem en padding
-  - Det gør så headerNav links er mere klikbar
-  Giver teksten en font-farve og størrelse.
+  * Giver links i mobile navbar en padding, text-farve og text-størrelse
+  * Brug hvis det skal dække et bredere fælt, men ik nødvendigt:
+  - display: inline-block;
+  - width: 50%;
 */
-.headerNav.active .headerNavLinks a {
-  display: inline-block;
-  width: 50%;
-  padding: var(--space-lg) 0rem;
+.headerNavMobile.active .headerNavLinks a {
+  padding: var(--space-xl);
   color: var(--color-text-secondary);
   font-size: var(--fs-lg);
 }
 
 /* 
-  Gør så listen (li) optager hele width, teksten indenfor er centreret.
-  Og giver en border-bottom + padding.
+  * Gør så listen (li) optager hele width, teksten indenfor er centreret.
+  * Og giver en border-bottom + padding.
 */
-.headerNav.active .headerNavLinks li {
+.headerNavMobile.active .headerNavLinks li {
   width: 100%;
   text-align: center;
   border-bottom: 2px solid var(--color-shadow-30);
-  padding: var(--space-lg);
+  padding: var(--space-2xl) 0rem;
 }
 
 /* [Burger Menu] */
 /* 
-  Selve burger menu knappen. Sætter dens position til at være absolut.
-  Placere den fra højre side af, forskudt med 2%.
-  Transform: linjen gør så den placeres midt før, relativ til højden af parent-containeren.
-  Giver kassen en width (height er auto)
-  Giver den en padding, så linjerne ikke går helt til kanterne.
-  Padding, farve, og gør så der er en cursor: pointer, så man kan se, at man kan klikke på den.
+  * Giver burgerMenu knappen en bestemt width + padding.
+  * Giver burgerMenu en baggrundsfarve + pointer cursor.
 */
 .burgerMenu {
-  position: absolute;
-  right: 2%;
-  transform: translateY(-50%);
-  display: block;
   width: var(--space-3xl);
   padding: var(--space-sm);
   background-color: var(--color-secondary);
@@ -330,7 +382,8 @@ header video {
 }
 
 /* 
-  Styling til selve burgerMenu linjerne.
+  * Styling til selve burgerMenu linjerne.
+  * Giver den en højde, farve og animation
 */
 .burgerMenu .burgerLine {
   height: var(--space-xs);
@@ -370,30 +423,134 @@ header video {
 
 
 /* [Footer] */
+/*
+  * Sættere footerens position til relativ til dens parent-container.
+  - placere footeren i bunden.
+  * Giver selve footeren width 100%, padding, baggrundsfarve og font-farve på alt font i footeren. 
+*/
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  background-color: var(--color-tertiary);
+  color: var(--color-text-primary);
+}
+
+/* Gør så kontakt-info boksen og SoMe boksen optager 100% width */
+.footerContactBox, .socialMedia {
+  width: 100%;
+}
+
+/* Giver kontakt-info boksen, som har flex via andet CSS class, et gap. */
+.footerContactBox {
+  gap: var(--space-sm);
+}
+
+/* Giver kontakt-info boksen's titel et font-størrelse og vægt. */
+.footerContactBox h6 {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+}
+
+/* Gør så kontakt-info boksen's info text har venstre-padding, for at forskyde. */
+.contactInfo {
+  padding-left: var(--space-sm);
+}
+
+/* Giver teksten, på nær den sidste <p>, et margin-bottom for at give teksten spacing. */
+.contactInfo p:not(:last-child) {
+  margin-bottom: var(--space-sm);
+}
+
+/* 
+  * Gør så SoMe kontaineren har padding, og er placeret øverst på y-aksen, i et column flexbox.
+  * Giver kontaineren et gap imellem indholdet.
+*/
+.socialMedia {
+  padding: var(--space-md) var(--space-lg);
+  align-items: flex-end;
+  gap: var(--space-lg);
+}
+
+/* Gør så nyhedsbrevs-kontaineren har margin på toppen. */
+.newsletterContainer {
+  margin-top: var(--space-lg);
+}
+
+/* Gør så der er mellemrum fra label teksten, til kontaineren i bunden med email feltet og tilmeld knappen. */
+.newsletterContainer label {
+  margin-bottom: var(--space-md);
+}
+
+/* Giver email input-kontaineren 100% width, padding og baggrundsfarve */
+.newsletterContainer input {
+  width: 100%;
+  padding: var(--space-sm);
+  background-color: var(--color-primary);
+}
+
+/* Giver div'en som indeholder input feltet og knappen, mellemrum mellem tingene. */
+.newsletterContainer div {
+  gap: var(--space-md);
+}
+
+/* 
+  * Styling til Tilmeld knappen.
+  * Giver knappen et padding, border-radius og baggrundsfarve.
+  * Giver knappens tekst et font-størrelse, vægt og farve.
+*/
+.submitNewsletter {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--space-md);
+  background-color: var(--color-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  color: var(--color-text-secondary);
+}
 
 /* [Ikoner] */
 .logoIcon {
-  width: clamp(2rem, 9.25vw + 2rem, 9.375rem);
-  height: clamp(2rem, 9.25vw + 2rem, 9.375rem);
+  width: clamp(2rem, 9vw + 2rem, 9rem);
+  height: clamp(2rem, 9vw + 2rem, 9rem);
   background-image: url(../IMGS/Logo.svg);
 }
 
+.accountIcon {
+  width: var(--space-2xl);
+  height: var(--space-2xl);
+  background-image: url(../IMGS/Account.svg);
+}
+
+.buyIcon {
+  width: var(--space-2xl);
+  height: var(--space-2xl);
+  background-image: url(../IMGS/Buy.svg);
+}
+
 .facebookIcon {
-  width: 3.125rem;
-  height: 3.125rem;
+  width: var(--space-2xl);
+  height: var(--space-2xl);
   background-image: url(../IMGS/SOME/facebook-ikon.svg);
 }
 
 .instagramIcon {
-  width: 3.125rem;
-  height: 3.125rem;
+  width: var(--space-2xl);
+  height: var(--space-2xl);
   background-image: url(../IMGS/SOME/instagram-ikon.svg);
 }
 
 .xIcon {
-  width: 3.125rem;
-  height: 3.125rem;
+  width: var(--space-2xl);
+  height: var(--space-2xl);
   background-image: url(../IMGS/SOME/x-twitter-ikon.svg);
+}
+
+.tiktokIcon {
+  width: var(--space-2xl);
+  height: var(--space-2xl);
+  background-image: url(../IMGS/SOME/tiktok-ikon.svg);
 }
 
 /* [Flex Layouts] */
@@ -434,32 +591,71 @@ header video {
 @media screen and (min-width: 801px) {
 
   /* [Desktop General Styling] */
-  /* Sætter alt i body (header, main, footer) til at være flex, og opsættes i kolonne. */
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* 
-     Gør så main-elementen fyldes ud, 
-     for at undgå en underlig fejl med white-space under footeren i korte sider 
-  */
-  main {
-    flex: 1;
-  }
 
   /* [Desktop Header + Navbar] */
+  /* Fjerner burgerMenu knappen */
   .burgerMenu {
     display: none;
   }
-
-  .headerNav {
-    display: flex;
+  
+  /* Gemmer mobil navbar */
+  .headerNavMobile {
+    display: none;
   }
 
-  .headerNavLinks {
+  /* 
+    * Styling til desktop Navbar.
+    * Display Flex med center placering på x-aksen.
+    * Giver det et mellemrum (gap) imellem i indholdet.
+    * Giver teksten inden i, en font-farve, størrelse og vægt.
+    */
+  .headerNavLeftDesktop, .headerNavRightDesktop {
     display: flex;
     align-items: center;
+    gap: var(--space-md);
+    color: var(--color-text-primary);
+    font-size: var(--fs-md);
+    font-weight: bold;
+  }
+
+  /* Giver links inden i desktop navbar et padding. */
+  .headerNavLeftDesktop a, .headerNavRightDesktop a {
+    padding: var(--space-md);
+  }
+
+  /* Giver ikonerne et margin, for spacing imellem tingene. */
+  .headerNavRightDesktop i {
+    margin: 0rem 0.75rem;
+  }
+
+  /* Gør så navbaren's logo er placeret lidt mere midtfor.*/
+  .logo {
+    transform: translateX(-50%);
+  }
+
+  /* [Desktop Footer] */
+  /* Giver SoMe kontaineren et andet type padding og flex-indstillinger (row i stedet for column) samt gap. */
+  .socialMedia {
+    padding: var(--space-md) 0rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+  /* 
+    * Gør så div'en indenfor newsletterContainer har position-relativ, 
+    - så knappen senere kan placeres til højrefor input feltet.
+  */
+  .newsletterContainer div {
+    position: relative;
+  }
+
+  /* Placere Tilmeld knappen ved siden af input-feltet. */
+  .submitNewsletter {
+    position: absolute;
+    right: 0;
+    transform: translate(120%, -1vh);
   }
 
 }

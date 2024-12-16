@@ -1,10 +1,10 @@
 // ***********  Variables **************
 // Containers (Burger Menu & Hide Burger Menu)
-const burgerMenu = document.querySelector(".burgerMenu");
 const headerNav = document.querySelector(".headerNav");
-const headerNavLinks = document.querySelector(".headerNavLinks");
+const headerNavMobile = document.querySelector(".headerNavMobile");
+const burgerMenu = document.querySelector(".burgerMenu");
 // Variable for Max Scroll, Value is in "PX"
-const scrollThreshold = 100;
+const scrollThreshold = 50;
 // Usable for toggleable containers.
 const toggleContainer = document.querySelector(".toggleable")
 
@@ -12,21 +12,33 @@ const toggleContainer = document.querySelector(".toggleable")
 burgerMenu.addEventListener("click", burgerClick); 
 function burgerClick() { 
   burgerMenu.classList.toggle("active");
-  headerNav.classList.toggle("active");
+  headerNavMobile.classList.toggle("active");
 }
 
 // Close burger and headerNav when a menu item is clicked
-headerNavLinks.addEventListener("click", navLinksClick);
-function navLinksClick() { 
+headerNavMobile.addEventListener("click", navMobileLinksClick);
+function navMobileLinksClick() { 
   burgerMenu.classList.remove("active");
-  headerNav.classList.remove("active");
+  headerNavMobile.classList.remove("active");
+}
+
+// Adds a background color when mouse is on the navbar
+headerNav.addEventListener("mouseover", navAddBgCol);
+  function navAddBgCol() {
+    headerNav.classList.add("mouseOver");
+}
+
+// Removes a background color when mouse away from the navbar
+headerNav.addEventListener("mouseout", navRemoveBgCol);
+  function navRemoveBgCol() {
+    headerNav.classList.remove("mouseOver");
 }
 
 // Reset the burger and headerNav state when resizing to desktop view
 window.addEventListener("resize", () => {
   if (window.innerWidth > 800) {
     burgerMenu.classList.remove("active");
-    headerNav.classList.remove("active");
+    headerNavMobile.classList.remove("active");
   }
 });
 
@@ -38,3 +50,4 @@ window.addEventListener('scroll', () => {
     headerNav.classList.remove("visible");
   }
 });
+

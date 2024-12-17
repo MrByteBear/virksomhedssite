@@ -11,30 +11,47 @@
   <link rel="shortcut icon" href="/FAVICON/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/FAVICON/apple-touch-icon.png">
   <link rel="manifest" href="FAVICON/site.webmanifest">
-  <link rel="stylesheet" href="CSS/omos.css">
-  <link rel="stylesheet" href="CSS/globalStyle.css">
+  <link rel="stylesheet" href="CSS/style.css">
   <title>Om Os</title>
 </head>
 
 <body>
-  <header>
-    <a href="forside.html">
-      <p class="headerLogoLeft">Tema-<span class="italic headerLogoRight">opg</span></p>
-    </a>
+  <header class="flex_col_center">
     <nav class="headerNav">
-      <ul class="headerNavLinks">
-        <li><a href="forside.html">Forside</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="faellesskab.html">Fællesskab</a></li>
-        <li><a href="omos.html">Om Os</a></li>
-        <li><a href="produkter.html" class="buttonPrimary" id="headerNavBtn">Produkter</a></li>
-      </ul>
-      <div class="burgerMenu">
-        <div class="burgerLine"></div>
-        <div class="burgerLine"></div>
-        <div class="burgerLine"></div>
+      <div class="headerNavLeft">
+        <div class="burgerMenu">
+          <div class="burgerLine"></div>
+          <div class="burgerLine"></div>
+          <div class="burgerLine"></div>
+        </div>
+        <div class="headerNavLeftDesktop">
+          <a href="kontakt.html">Fællesskab</a>
+          <a href="faellesskab.html">Om Os</a>
+          <a href="omos.html">Kontakt Os</a>
+        </div>
+      </div>
+      <a href="forside.html"><i class="logo logoIcon"></i></a>
+      <div class="headerNavRight">
+        <div class="headerNavRightDesktop">
+          <a href="produkter.html">Produkter</a>
+          <i class="accountIcon"></i>
+          <i class="buyIcon"></i>
+        </div>
+        <div class="headerNavMobile">
+          <i class="accountIcon"></i>
+          <i class="buyIcon"></i>
+          <ul class="headerNavLinks">
+            <li><a href="kontakt.html">Fællesskab</a></li>
+            <li><a href="faellesskab.html">Om Os</a></li>
+            <li><a href="omos.html">Kontakt Os</a></li>
+            <li><a href="produkter.html">Produkter</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
+    <video autoplay loop muted>
+      <source src="VIDS/HeroVideo.webm" type="video/webm">
+    </video>
   </header>
   <main>
     <div class="hero-container">
@@ -63,27 +80,33 @@
       <img src="IMGS/omos3.jpg" alt="tredjepic">
     </div>
   </main>
-  <footer class="flex_col_center">
-    <div class="footerTop">
-      <p>
-        @Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel vestibulum est, at aliquam metus.
-        Sed eu ligula eget leo ultricies condimentum a vitae nibh. Quisque finibus velit id rhoncus consequat.
-      </p>
-    </div>
-    <nav class="footerNav">
-      <ul class="footerMenu">
-        <li><a href="forside.html">Forside</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="faellesskab.html">Fællesskab</a></li>
-        <li><a href="omos.html">Om Os</a></li>
-        <li><a href="produkter.html" class="buttonPrimary" id="headerNavBtn">Produkter</a></li>
-      </ul>
-      <div class="socialMedia">
-        <a href="https://www.facebook.com"><img src="IMGS/SOME/IconFacebook.png" alt="Facebook Icon"></a>
-        <a href="https://www.twitter.com"><img src="IMGS/SOME/IconTwitter.png" alt="Twitter Icon"></a>
-        <a href="https://www.instagram.com"><img src="IMGS/SOME/IconInstagram.png" alt="Instagram Icon"></a>
+  <footer>
+    <div class="flex_row_spaceBetween">
+      <div class="footerContactBox flex_col">
+        <h6>Kontakt os på</h6>
+        <div class="contactInfo">
+          <p>Email: blablabla@gmail.com</p>
+          <p>Telefonnummer: + 45 13 81 97 54</p>
+          <p>FRA FREDAG TIL SØNDAG:</p>
+          <p>- 10:00 - 18:00</p>
+        </div>
       </div>
-    </nav>
+      <div class="socialMedia flex_col">
+        <a href="https://www.facebook.com"><i class="facebookIcon"></i></a>
+        <a href="https://www.instagram.com"><i class="instagramIcon"></i></a>
+        <a href="https://www.tiktok.com"><i class="tiktokIcon"></i></a>
+      </div>
+    </div>
+    <div class="newsletterContainer flex_col_center">
+      <form method="POST" id="newsletter-form">
+        <label for="email">TILMELD DIG VORES NYHEDSBREV</label>
+        <div class="flex_row_spaceBetween">
+          <input class="standardField" type="email" id="email" name="email" placeholder="Indtast email addresse"
+            required>
+          <button class="submitNewsletter" type="submit">Tilmeld</button>
+        </div>
+      </form>
+    </div>
   </footer>
   <script src="JS/scripts.js"></script>
 </body>

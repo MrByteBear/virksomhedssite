@@ -11,56 +11,143 @@
   <link rel="shortcut icon" href="/FAVICON/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/FAVICON/apple-touch-icon.png">
   <link rel="manifest" href="FAVICON/site.webmanifest">
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/globalStyle.css">
+  <link rel="stylesheet" href="CSS/kontakt.css">
   <title>Kontakt</title>
 </head>
 
 <body>
-  <header>
-    <a href="forside.html">
-      <p class="headerLogoLeft">Tema-<span class="italic headerLogoRight">opg</span></p>
-    </a>
+  <header class="flex_col_center">
     <nav class="headerNav">
-      <ul class="headerNavLinks">
-        <li><a href="forside.html">Forside</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="faellesskab.html">Fællesskab</a></li>
-        <li><a href="omos.html">Om Os</a></li>
-        <li><a href="produkter.html" class="buttonPrimary" id="headerNavBtn">Produkter</a></li>
-      </ul>
-      <div class="burgerMenu">
-        <div class="burgerLine"></div>
-        <div class="burgerLine"></div>
-        <div class="burgerLine"></div>
+      <div class="headerNavLeft">
+        <div class="burgerMenu">
+          <div class="burgerLine"></div>
+          <div class="burgerLine"></div>
+          <div class="burgerLine"></div>
+        </div>
+        <div class="headerNavLeftDesktop">
+          <a href="kontakt.html">Fællesskab</a>
+          <a href="faellesskab.html">Om Os</a>
+          <a href="omos.html">Kontakt Os</a>
+        </div>
+      </div>
+      <a href="forside.html"><i class="logo logoIcon"></i></a>
+      <div class="headerNavRight">
+        <div class="headerNavRightDesktop">
+          <a href="produkter.html">Produkter</a>
+          <i class="accountIcon"></i>
+          <i class="buyIcon"></i>
+        </div>
+        <div class="headerNavMobile">
+          <i class="accountIcon"></i>
+          <i class="buyIcon"></i>
+          <ul class="headerNavLinks">
+            <li><a href="kontakt.html">Fællesskab</a></li>
+            <li><a href="faellesskab.html">Om Os</a></li>
+            <li><a href="omos.html">Kontakt Os</a></li>
+            <li><a href="produkter.html">Produkter</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
+    <video autoplay loop muted>
+      <source src="VIDS/HeroVideo.webm" type="video/webm">
+    </video>
   </header>
   <main>
-  </main>
-  <footer class="flex_col_center">
-    <div class="footerTop">
-      <p>
-        @Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel vestibulum est, at aliquam metus.
-        Sed eu ligula eget leo ultricies condimentum a vitae nibh. Quisque finibus velit id rhoncus consequat.
-      </p>
-    </div>
-    <nav class="footerNav">
-      <ul class="footerMenu">
-        <li><a href="forside.html">Forside</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="faellesskab.html">Fællesskab</a></li>
-        <li><a href="omos.html">Om Os</a></li>
-        <li><a href="produkter.html" class="buttonPrimary" id="headerNavBtn">Produkter</a></li>
-      </ul>
-      <div class="socialMedia">
-        <a href="https://www.facebook.com"><img src="IMGS/SOME/IconFacebook.png" alt="Facebook Icon"></a>
-        <a href="https://www.twitter.com"><img src="IMGS/SOME/IconTwitter.png" alt="Twitter Icon"></a>
-        <a href="https://www.instagram.com"><img src="IMGS/SOME/IconInstagram.png" alt="Instagram Icon"></a>
+    <div class="kontakt_1">
+      <div>
+        <img src="IMGS/kontakt_1.jpg" alt="hygge foto">
       </div>
-    </nav>
+      <div>
+        <h1>KONTAKT OS HER</h1>
+        <p> E-MAIL - info@spottercph.dk</p>
+        <p>TELLEFON NUMMER - +45 22 16 13 50</p>
+        <p>CVR - 4892561</p>
+        <div class="aabnings_tider">
+          <h2> ÅBNINGS TIDER</h2>
+          <p> mandag - fredag 10 – 18 </p>
+          <p>lørdag 10 – 16</p>
+          <p>søndag - lukket</p>
+        </div>
+      </div>
+    </div>
+
+    <img src="IMGS/kontakt_2.jpg" alt="løbe foto">
+
+    <div class="kontakt_2">
+      <div>
+        <a href="https://www.instagram.com/spottercph/"><img src="IMGS/insta.png" alt="Instagram Icon"></a>
+
+        <h3> INSTAGRAM</h3>
+        <p> Følg Spotter på Instagram!</p>
+        <p>
+          På vores Instagram-profil finder du: Inspirerende billeder og videoer, der guider dig til en
+          sundere livsstil.De
+          nyeste opdateringer om vores eksklusive tilbud og spændende events.Tips og råd fra eksperterne, så
+          du får mest muligt
+          ud af dine kosttilskud.
+          Hold dig opdateret og vær med på rejsen mod velvære! Følg os nu og bliv en del af
+          Spotter-fællesskabet.
+        </p>
+      </div>
+      <div>
+        <a href="https://www.facebook.com/Spottercph"><img src="IMGS/facebook.png" alt="Facebook Icon"></a>
+        <h3> FACEBOOK</h3>
+        <p>Følg Spotter på Facebook!</p>
+        <p>På vores Facebook-side kan du: Holde dig opdateret på de nyeste tilbud, arrangementer og spændende
+          nyheder. Deltage i
+          samtaler og få svar på dine spørgsmål om kosttilskud fra vores eksperter.Få førstehåndsinformation
+          om kommende events
+          og kampagner. Se videoer og opslag, der hjælper dig med at leve sundt og balanceret.
+          Gå ikke glip af muligheden for at blive en del af Spotter-fællesskabet. Følg os på Facebook i dag og
+          tag første skridt
+          mod et sundere liv!</p>
+      </div>
+    </div>
+
+
+    <div class="kontakt_3">
+      <p>FIND VEJ HER:</p>
+      <p>Spottercph, Nørrebrogade 26, 2200 København</p>
+      <img src="IMGS/kort.png" alt="kort">
+    </div>
+
+
+
+
+
+
+  </main>
+  <footer>
+    <div class="flex_row_spaceBetween">
+      <div class="footerContactBox flex_col">
+        <h6>Kontakt os på</h6>
+        <div class="contactInfo">
+          <p>Email: blablabla@gmail.com</p>
+          <p>Telefonnummer: + 45 13 81 97 54</p>
+          <p>FRA FREDAG TIL SØNDAG:</p>
+          <p>- 10:00 - 18:00</p>
+        </div>
+      </div>
+      <div class="socialMedia flex_col">
+        <a href="https://www.facebook.com"><i class="facebookIcon"></i></a>
+        <a href="https://www.instagram.com"><i class="instagramIcon"></i></a>
+        <a href="https://www.tiktok.com"><i class="tiktokIcon"></i></a>
+      </div>
+    </div>
+    <div class="newsletterContainer flex_col_center">
+      <form method="POST" id="newsletter-form">
+        <label for="email">TILMELD DIG VORES NYHEDSBREV</label>
+        <div class="flex_row_spaceBetween">
+          <input class="standardField" type="email" id="email" name="email" placeholder="Indtast email addresse"
+            required>
+          <button class="submitNewsletter" type="submit">Tilmeld</button>
+        </div>
+      </form>
+    </div>
   </footer>
   <script src="JS/scripts.js"></script>
 </body>
 
 </html>
-

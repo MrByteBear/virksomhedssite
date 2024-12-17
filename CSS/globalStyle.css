@@ -25,20 +25,19 @@
 /* [Variabler] */
 /* Vores Variabler */
 :root {
-
   /* Farver */
-  --color-primary: #F9F9F9;         /* Bruges som sidernes baggrundsfarve */
-  --color-secondary: #3C5461;       /* Bruges som header ? / footer / accent farve */
-  --color-tertiary: #81A7AB;        /* Bruges som header ? / accent farve */
-  --color-neutral: #CDD3D5;         /* Bruges som en neutral farve */
-  --color-text-primary: #000000;    /* Bruges som font-farve, sort */
-  --color-text-secondary: #FFFFFF;  /* Bruges som font-farve, hvid */
-  --color-shadow-60: #00000099;     /* Bruges som box-shadow farve, sort, 60% transperant */
-  --color-shadow-30: #0000004d;     /* Bruges som box-shadow farve, sort, 30% transperant */
+  --color-primary: #f9f9f9; /* Bruges som sidernes baggrundsfarve */
+  --color-secondary: #3c5461; /* Bruges som header ? / footer / accent farve */
+  --color-tertiary: #81a7ab; /* Bruges som header ? / accent farve */
+  --color-neutral: #cdd3d5; /* Bruges som en neutral farve */
+  --color-text-primary: #000000; /* Bruges som font-farve, sort */
+  --color-text-secondary: #ffffff; /* Bruges som font-farve, hvid */
+  --color-shadow-60: #00000099; /* Bruges som box-shadow farve, sort, 60% transperant */
+  --color-shadow-30: #0000004d; /* Bruges som box-shadow farve, sort, 30% transperant */
 
   /* Font Variabler */
   --font-family-sans: "Josefin Sans", sans-serif;
-  --font-family-serif: "Merriweather", serif; 
+  --font-family-serif: "Merriweather", serif;
 
   /* Vores font-størrelser, genereret med en type-scale generator.
      Font-størrelserne er skalerbar afhængig af skærmbredde, ved brug af clamp().
@@ -62,18 +61,19 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
   --space-4xl: 5rem;
-
 }
 
 /* Vores Fonte */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 
 /* [Resets] */
 /* Globale Resets / Tilføjelser */
 
 /* Gør så ting forbliver i border-box, med padding og margin, og ikke bliver "skubbet ud" fra dens parent-container */
-*, *::before, *::after{
-  box-sizing: border-box; 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* Resetter alle margin og padding til 0 */
@@ -83,12 +83,15 @@
 }
 
 /* Smooth Scrolling, kan undlades */
-html:focus-within{
-    scroll-behavior: smooth; 
+html:focus-within {
+  scroll-behavior: smooth;
 }
 
 /* Resetter input, knap, tekst-områder (tænk besked-felter i en kontaktformular) select (tænk "vælg-emne" dropdown-muligheder)*/
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   appearance: auto;
   display: inline-block;
   border: none;
@@ -102,17 +105,20 @@ input, button, textarea, select {
 /* For Chrome, Safari, og Edge */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* For Firefox */
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 /* Fjerner fokus-effekten (outline-effekt) af input, select, knap og tekst-område elementer */
-input:focus, select:focus, button:focus, textarea:focus {
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
   outline: none;
 }
 
@@ -127,7 +133,9 @@ a {
 }
 
 /* Fjerner det irriterende "blå" font-farve på links der er besøgte. Burde fikse det */
-a:visited, a:active, a:hover {
+a:visited,
+a:active,
+a:hover {
   color: inherit;
 }
 
@@ -171,7 +179,6 @@ body {
   min-height: 100vh;
 }
 
-
 /*
   * Gør så main-elementen fyldes ud, 
   - for at undgå en underlig fejl med white-space under footeren i korte sider.
@@ -191,7 +198,13 @@ header {
 
 /* Gør så Headings og Body-tekst kan skrympes, hvis vindue-størrelsen ændres på, så det ikke "forsvinder" */
 /* Sætter også linjehøjde til 1.5x tekststørrelsen, som anvist i Interfacedesign bogen. */
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   text-wrap: wrap;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -199,7 +212,14 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /* Links og Headings Font Family */
-a, h1, h2, h3, h4, h5, h6, li {
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li {
   font-family: var(--font-family-sans);
 }
 
@@ -209,7 +229,10 @@ p {
 }
 
 /* Font styling for input, button, select, textarea */
-input, button, select, textarea {
+input,
+button,
+select,
+textarea {
   font-family: var(--font-family-sans);
 }
 
@@ -314,7 +337,8 @@ header video {
 }
 
 /* Skjuler Desktop navbar kontainere */
-.headerNavLeftDesktop, .headerNavRightDesktop {
+.headerNavLeftDesktop,
+.headerNavRightDesktop {
   display: none;
 }
 
@@ -421,7 +445,6 @@ header video {
   transition: 0.2s linear;
 }
 
-
 /* [Footer] */
 /*
   * Sættere footerens position til relativ til dens parent-container.
@@ -439,7 +462,8 @@ footer {
 }
 
 /* Gør så kontakt-info boksen og SoMe boksen optager 100% width */
-.footerContactBox, .socialMedia {
+.footerContactBox,
+.socialMedia {
   width: 100%;
 }
 
@@ -589,7 +613,6 @@ footer {
 
 /* [Desktop CSS] */
 @media screen and (min-width: 801px) {
-
   /* [Desktop General Styling] */
 
   /* [Desktop Header + Navbar] */
@@ -597,7 +620,7 @@ footer {
   .burgerMenu {
     display: none;
   }
-  
+
   /* Gemmer mobil navbar */
   .headerNavMobile {
     display: none;
@@ -609,7 +632,8 @@ footer {
     * Giver det et mellemrum (gap) imellem i indholdet.
     * Giver teksten inden i, en font-farve, størrelse og vægt.
     */
-  .headerNavLeftDesktop, .headerNavRightDesktop {
+  .headerNavLeftDesktop,
+  .headerNavRightDesktop {
     display: flex;
     align-items: center;
     gap: var(--space-md);
@@ -619,7 +643,8 @@ footer {
   }
 
   /* Giver links inden i desktop navbar et padding. */
-  .headerNavLeftDesktop a, .headerNavRightDesktop a {
+  .headerNavLeftDesktop a,
+  .headerNavRightDesktop a {
     padding: var(--space-md);
   }
 
@@ -657,5 +682,4 @@ footer {
     right: 0;
     transform: translate(120%, -1vh);
   }
-
 }

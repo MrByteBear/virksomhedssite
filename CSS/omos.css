@@ -51,6 +51,7 @@ p {
   padding-left: var(--space-md);
   padding-right: calc(var(--space-md) * 6);
   color: white;
+  font-weight: 200;
 }
 
 .tekstur h2 {

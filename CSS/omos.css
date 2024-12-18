@@ -1,0 +1,107 @@
+h1,
+h2 {
+  font-family: var(--font-family-sans);
+}
+
+p {
+  font-family: var(--font-family-serif);
+}
+
+/***** Hero video *****/
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Video fylder hele viewportens højde */
+  overflow: hidden; /* Skjuler eventuel overskydende del af videoen */
+}
+
+.herovid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Sørger for, at videoen fylder containeren pænt uden at strække sig */
+}
+
+/**** ****/
+
+.hetter {
+  display: flex; /* Brug flexbox til nem centrering */
+  justify-content: center; /* Centrerer horisontalt */
+  align-items: center; /* Centrerer vertikalt (hvis nødvendigt) */
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-2xl);
+  background-color: var(--color-secondary);
+  text-align: center; /* Sørger for, at tekst indeni er centreret */
+  color: white;
+}
+
+.fyrstabrot {
+  padding-bottom: var(--space-3xl);
+  background-color: var(--color-secondary);
+}
+.fyrstabrot img {
+  width: 100%;
+  height: auto;
+}
+
+.tekstur {
+  padding-top: var(--space-md);
+  padding-left: var(--space-md);
+  padding-right: calc(var(--space-md) * 6);
+  color: white;
+}
+
+.tekstur h2 {
+  padding-top: var(--space-xl);
+}
+
+.tekstur p {
+  line-height: 37px;
+}
+
+.naestabrot {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+  padding-bottom: var(--space-4xl);
+  padding-top: var(--space-4xl);
+}
+
+.naestabrot img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 600px) {
+  .fyrstabrot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .fyrstabrot img {
+    width: 85%;
+    padding-left: var(--space-4xl);
+  }
+
+  .tekstur {
+    line-height: 33px;
+    padding-top: 0;
+  }
+
+  .naestabrot {
+    display: flex; /* Gør containeren til en flex-container */
+    justify-content: center; /* Centrerer billeder horisontalt */
+    align-items: center; /* Centrerer billeder vertikalt */
+    gap: 200px; /* Tilføjer afstand mellem billederne */
+  }
+
+  .naestabrot img {
+    width: 100%; /* Juster billedets bredde */
+    max-width: 490px; /* Giver en maksimal bredde til billederne */
+    height: auto; /* Bevarer billedets proportioner */
+    object-fit: cover; /* Sikrer, at billedet udfylder containeren korrekt */
+  }
+}

@@ -289,6 +289,7 @@ header video, header img {
   display: block;
   width: 100%;
   margin-top: 0;
+  border-radius: var(--space-xl);
 }
 
 .logo {
@@ -310,16 +311,17 @@ header video, header img {
 
 .headerNav {
   position: fixed;
-  top: calc(0% + 1rem);
+  top: calc(0% + var(--space-md));
   left: 0;
   margin-left: 1rem;
   z-index: 500;
-  width: calc(100% - 2rem);
+  width: calc(100% - var(--space-xl));
   padding: 0rem var(--space-md);
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: all 0.4s ease-in-out;
+  border-radius: var(--space-xl);
 }
 
 /* Bliver tilføjet via JS, til at give den en baggrund + box-shadow med mouseover */
@@ -329,9 +331,6 @@ header video, header img {
   transition: all 0.4s ease-in-out;
 }
 
-.headerNav.mouseOver a, .headerNav.scrollDown a {
-  color: var(--color-text-secondary);
-}
 .headerNav.scrollDown {
   top: 0;
 }
@@ -343,7 +342,7 @@ header video, header img {
 
 .headerNav a {
   font-size: calc(var(--fs-md) - 15%);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 }
 
 /* En lille hover-effekt på alle links. */
@@ -355,7 +354,7 @@ header video, header img {
 .headerNavMobile {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 /* Skjuler Desktop navbar kontainere */
@@ -389,6 +388,7 @@ header video, header img {
   background-color: var(--color-secondary);
   box-shadow: 0rem var(--space-xs) var(--space-xs) var(--color-shadow-60);
   z-index: 500;
+  border-radius: var(--space-xl);
 }
 
 /* 
@@ -526,15 +526,15 @@ footer p {
 
 /* [Ikoner] */
 .logoIcon {
-  width: clamp(2rem, 4vw, 4rem);
-  height: clamp(2rem, 4vw, 4rem);
+  width: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  height: clamp(var(--space-xl), 4vw, var(--space-3xl));
   background-image: url(../IMGS/SVG/Logo.svg);
   transform: scale(0.9);
 }
 
 .burgerOpenIcon {
-  width: clamp(1rem, 4vw, 4rem);
-  height: clamp(1rem, 4vw, 4rem);
+  width: clamp(var(--space-md), 4vw, var(--space-3xl));
+  height: clamp(var(--space-md), 4vw, var(--space-3xl));
   background-image: url(../IMGS/SVG/burger-opened.svg);
 }
 

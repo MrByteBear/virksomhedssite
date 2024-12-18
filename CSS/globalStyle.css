@@ -165,12 +165,15 @@ i {
   */
 body {
   overflow-x: hidden;
+  overflow-y: auto;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 /*
   * Gør så main-elementen fyldes ud, 
@@ -180,9 +183,10 @@ body {
   * Sætter baggrundsfarven på indholdet imellem header og footer til vores mættet hvid
 */
 main {
+  overflow-y: auto;
+  flex: 1;
   padding: 1rem;
   background-color: var(--color-primary);
-  flex: 1;
 }
 
 header {
@@ -248,6 +252,7 @@ button:hover {
 /* Sætter selve headeren's pos til at være relativ til parent-container.*/
 header {
   position: relative;
+  width: 100%;
   top: 0;
   left: 0;
 }
@@ -256,9 +261,17 @@ header {
   * Siger at heroimage i headeren skal optage 100% width. 
   * Giver den en lille border-radius, så den matcher nav-baren  
 */
-header video {
+header video, header img {
+  display: block;
   width: 100%;
-  border-radius: var(--space-xl);
+  margin-top: 0;
+}
+
+.logo {
+  max-height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* [Navbar] */
@@ -272,28 +285,28 @@ header video {
 */
 
 .headerNav {
-  position: absolute;
-  width: calc(100% - var(--space-xl));
+  position: fixed;
+  top: calc(0% + 1rem);
+  left: 0;
+  margin-left: 1rem;
+  z-index: 500;
+  width: calc(100% - 2rem);
   padding: 0rem var(--space-md);
-  border-radius: var(--space-xl);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  opacity: 100%;
-  transition: all 0.4s ease-in-out;
-}
-
-/* Bliver tilføjet (.visible) via JS, til at gøre den usynlig, når man scroller 50px ned. */
-.headerNav.visible {
-  opacity: 0%;
   transition: all 0.4s ease-in-out;
 }
 
 /* Bliver tilføjet via JS, til at give den en baggrund + box-shadow med mouseover */
-.headerNav.mouseOver {
-  background-color: var(--color-tertiary);
+.headerNav.mouseOver, .headerNav.scrollDown {
+  background-color: var(--color-primary);
   box-shadow: 0rem var(--space-xs) var(--space-xs) var(--color-shadow-60);
   transition: all 0.4s ease-in-out;
+}
+
+.headerNav.scrollDown {
+  top: 0;
 }
 
 /* Gør så alle ikoner har pointers når man har musen over dem. */
@@ -337,7 +350,6 @@ header video {
   top: 100%;
   left: 0;
   width: 100%;
-  border-radius: var(--space-xl);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -353,20 +365,24 @@ header video {
   - width: 50%;
 */
 .headerNavMobile.active .headerNavLinks a {
-  padding: var(--space-xl);
+  padding: var(--space-md);
   color: var(--color-text-secondary);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
 }
 
 /* 
   * Gør så listen (li) optager hele width, teksten indenfor er centreret.
-  * Og giver en border-bottom + padding.
+  * Og giver en padding.
 */
 .headerNavMobile.active .headerNavLinks li {
   width: 100%;
   text-align: center;
+  padding: var(--space-xl) 0rem;
+}
+
+/* Giver en border bottom til alle links kontainere i mobile nav, på nær den sidste. */
+.headerNavMobile.active .headerNavLinks li:not(:last-child) {
   border-bottom: 2px solid var(--color-shadow-30);
-  padding: var(--space-2xl) 0rem;
 }
 
 /* [Burger Menu] */
@@ -375,9 +391,8 @@ header video {
   * Giver burgerMenu en baggrundsfarve + pointer cursor.
 */
 .burgerMenu {
-  width: var(--space-3xl);
+  width: 100%;
   padding: var(--space-sm);
-  background-color: var(--color-secondary);
   cursor: pointer;
 }
 
@@ -434,8 +449,8 @@ footer {
   left: 0;
   width: 100%;
   padding: var(--space-md) var(--space-lg) var(--space-lg);
-  background-color: var(--color-tertiary);
-  color: var(--color-text-primary);
+  background-color: var(--color-secondary);
+  color: var(--color-text-secondary);
 }
 
 /* Gør så kontakt-info boksen og SoMe boksen optager 100% width */
@@ -502,9 +517,9 @@ footer {
   * Giver knappens tekst et font-størrelse, vægt og farve.
 */
 .submitNewsletter {
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-sm) var(--space-lg);
   border-radius: var(--space-md);
-  background-color: var(--color-secondary);
+  background-color: var(--color-tertiary);
   font-size: var(--fs-sm);
   font-weight: 800;
   color: var(--color-text-secondary);
@@ -512,22 +527,35 @@ footer {
 
 /* [Ikoner] */
 .logoIcon {
-  width: clamp(2rem, 9vw + 2rem, 9rem);
-  height: clamp(2rem, 9vw + 2rem, 9rem);
-  background-image: url(../IMGS/Logo.svg);
+  width: clamp(2rem, 4vw, 4rem);
+  height: clamp(2rem, 4vw, 4rem);
+  background-image: url(../IMGS/SVG/Logo.svg);
+  transform: scale(0.9);
 }
 
+.burgerOpenIcon {
+  width: clamp(1rem, 4vw, 4rem);
+  height: clamp(1rem, 4vw, 4rem);
+  background-image: url(../IMGS/SVG/burger-opened.svg);
+}
+
+.burgerOpenIcon.active {
+  background-image: url(../IMGS/SVG/burger-closed.svg);
+}
+
+/* Bruges ikke, det blev bestemt i gruppen, at der ikke skal være disse ikoner.
 .accountIcon {
   width: var(--space-2xl);
   height: var(--space-2xl);
-  background-image: url(../IMGS/Account.svg);
+  background-image: url(../IMGS/SVG/Account.svg);
 }
 
 .buyIcon {
   width: var(--space-2xl);
   height: var(--space-2xl);
-  background-image: url(../IMGS/Buy.svg);
+  background-image: url(../IMGS/SVG/buy.svg);
 }
+*/
 
 .facebookIcon {
   width: var(--space-2xl);
@@ -628,10 +656,14 @@ footer {
     margin: 0rem 0.75rem;
   }
 
-  /* Gør så navbaren's logo er placeret lidt mere midtfor.*/
+  /* Gør så navbaren's logo er placeret lidt mere midtfor.
   .logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
     transform: translateX(-50%);
   }
+  */
 
   /* [Desktop Footer] */
   /* Giver SoMe kontaineren et andet type padding og flex-indstillinger (row i stedet for column) samt gap. */
@@ -655,7 +687,7 @@ footer {
   .submitNewsletter {
     position: absolute;
     right: 0;
-    transform: translate(120%, -1vh);
+    transform: translate(120%, -1px);
   }
 
 }

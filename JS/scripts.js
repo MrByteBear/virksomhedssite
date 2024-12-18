@@ -3,22 +3,21 @@
 const headerNav = document.querySelector(".headerNav");
 const headerNavMobile = document.querySelector(".headerNavMobile");
 const burgerMenu = document.querySelector(".burgerMenu");
+const burgerMenuIcon = document.querySelector("#burgerBtn")
 // Variable for Max Scroll, Value is in "PX"
-const scrollThreshold = 50;
-// Usable for toggleable containers.
-const toggleContainer = document.querySelector(".toggleable")
+const scrollThreshold = 100;
 
 // Toggle burger and headerNav on click
 burgerMenu.addEventListener("click", burgerClick); 
 function burgerClick() { 
-  burgerMenu.classList.toggle("active");
+  burgerMenuIcon.classList.toggle("active");
   headerNavMobile.classList.toggle("active");
 }
 
 // Close burger and headerNav when a menu item is clicked
 headerNavMobile.addEventListener("click", navMobileLinksClick);
 function navMobileLinksClick() { 
-  burgerMenu.classList.remove("active");
+  burgerMenuIcon.classList.remove("active");
   headerNavMobile.classList.remove("active");
 }
 
@@ -37,7 +36,7 @@ headerNav.addEventListener("mouseout", navRemoveBgCol);
 // Reset the burger and headerNav state when resizing to desktop view
 window.addEventListener("resize", () => {
   if (window.innerWidth > 800) {
-    burgerMenu.classList.remove("active");
+    burgerMenuIcon.classList.remove("active");
     headerNavMobile.classList.remove("active");
   }
 });
@@ -45,9 +44,9 @@ window.addEventListener("resize", () => {
 // Adds / Removes visibility on header when scrolling past 100px in height.
 window.addEventListener('scroll', () => {
   if (window.scrollY > scrollThreshold) {
-    headerNav.classList.add("visible");
+    headerNav.classList.add("scrollDown");
   } else {
-    headerNav.classList.remove("visible");
+    headerNav.classList.remove("scrollDown");
   }
 });
 

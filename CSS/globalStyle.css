@@ -324,11 +324,14 @@ header video, header img {
 
 /* Bliver tilføjet via JS, til at give den en baggrund + box-shadow med mouseover */
 .headerNav.mouseOver, .headerNav.scrollDown {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   box-shadow: 0rem var(--space-xs) var(--space-xs) var(--color-shadow-60);
   transition: all 0.4s ease-in-out;
 }
 
+.headerNav.mouseOver a, .headerNav.scrollDown a {
+  color: var(--color-text-secondary);
+}
 .headerNav.scrollDown {
   top: 0;
 }
@@ -336,6 +339,11 @@ header video, header img {
 /* Gør så alle ikoner har pointers når man har musen over dem. */
 .headerNav i {
   cursor: pointer;
+}
+
+.headerNav a {
+  font-size: calc(var(--fs-md) - 15%);
+  color: var(--color-text-primary);
 }
 
 /* En lille hover-effekt på alle links. */
@@ -421,46 +429,6 @@ header video, header img {
   cursor: pointer;
 }
 
-/* 
-  * Styling til selve burgerMenu linjerne.
-  * Giver den en højde, farve og animation
-*/
-.burgerMenu .burgerLine {
-  height: var(--space-xs);
-  background-color: var(--color-text-secondary);
-  transition: 0.2s linear;
-}
-
-/* Forskyder linjerne en smule i aktiv-tilstand, så de er mere centreret */
-.burgerMenu.active {
-  padding-left: 0.6rem;
-}
-
-/* Gør så der er mellemrum imellem linjerne (på nær bunden) */
-.burgerMenu .burgerLine:not(:last-child) {
-  margin-bottom: var(--space-sm);
-}
-
-/* 
-  Nedenfor er bare animationen af burger-linjerne, efter de er klikket på.
-*/
-.burgerMenu.active .burgerLine:nth-child(1) {
-  transform-origin: left;
-  transform: rotate(30deg);
-  transition: 0.2s linear;
-}
-
-.burgerMenu.active .burgerLine:nth-child(2) {
-  opacity: 0;
-  transition: 0.15s linear;
-}
-
-.burgerMenu.active .burgerLine:nth-child(3) {
-  transform-origin: left;
-  transform: rotate(-30deg);
-  transition: 0.2s linear;
-}
-
 /* [Footer] */
 /*
   * Sættere footerens position til relativ til dens parent-container.
@@ -474,7 +442,13 @@ footer {
   width: 100%;
   padding: var(--space-md) var(--space-lg) var(--space-lg);
   background-color: var(--color-secondary);
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary)!important;
+}
+
+footer p {
+  color: var(--color-text-secondary)!important;
+  font-family: var(--font-family-serif)!important;
+  font-weight: 400!important;
 }
 
 /* Gør så kontakt-info boksen og SoMe boksen optager 100% width */

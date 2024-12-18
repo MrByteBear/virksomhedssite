@@ -24,6 +24,11 @@ body {
   line-height: 40px;
 }
 
+/* Bjørn: Skubber det lidt ned, kontaineren er under headeren i mobile. */
+.kontakt_1 {
+  margin-top: 1rem;
+}
+
 .kontakt_2 {
   display: grid;
   grid-template-columns: 1fr 1fr;

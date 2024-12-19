@@ -18,66 +18,49 @@
 
 <body>
   <header class="flex_col_center">
+    <img src="IMGS/SOME/spotterfaellesskab.jpg" alt="spotterfaellesskab">
     <nav class="headerNav">
       <div class="headerNavLeft">
         <div class="burgerMenu">
-          <div class="burgerLine"></div>
-          <div class="burgerLine"></div>
-          <div class="burgerLine"></div>
+          <i class="burgerOpenIcon" id="burgerBtn"></i>
         </div>
         <div class="headerNavLeftDesktop">
-          <a href="kontakt.html">Fællesskab</a>
-          <a href="faellesskab.html">Om Os</a>
-          <a href="omos.html">Kontakt Os</a>
+          <a href="omos.html">Om Os</a>
+          <a href="kontakt.html">Kontakt</a>
         </div>
       </div>
-      <a href="forside.html"><i class="logo logoIcon"></i></a>
+      <a href="forside.html" class="logo"><i class="logoIcon"></i></a>
       <div class="headerNavRight">
         <div class="headerNavRightDesktop">
+          <a href="faellesskab.html">Community</a>
           <a href="produkter.html">Produkter</a>
-          <i class="accountIcon"></i>
-          <i class="buyIcon"></i>
         </div>
         <div class="headerNavMobile">
-          <i class="accountIcon"></i>
-          <i class="buyIcon"></i>
           <ul class="headerNavLinks">
-            <li><a href="kontakt.html">Fællesskab</a></li>
-            <li><a href="faellesskab.html">Om Os</a></li>
-            <li><a href="omos.html">Kontakt Os</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="omos.html">Om Os</a></li>
+            <li><a href="faellesskab.html">Community</a></li>
             <li><a href="produkter.html">Produkter</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="grid_2-1">
-      <div class="hero">
-        <div id="lottie"></div>
-        <img src="IMGS/SOME/spotterfaellesskab.jpg" alt="spotterfaellesskab">
-      </div>x
-    </div>
-
   </header>
-  <main>
+  <main class="community">
     <p>Fællesskabet i Spotter er ofte en af de største motivationsfaktorer for at deltage i vores forskellige events,
       om det er en fysisk aktiv begivenhed eller bare en hyggelig social sammenkomst. Det bygger på en
       kombination af social støtte, fælles mål og glæden ved at dele en aktiv livsstil med andre. Som en forretning
       inden for fitness og helbred, går vi lige så meget op i selve kunden som person som vi gør med fitness.
     </p>
-
-
     <div class="grid_1-1">
-      <img src="IMGS/SOME/spotter_loeb.png" alt="spotter_loeb">
-
+      <img src="IMGS/spotter_loeb.png" alt="spotter_loeb">
       <p>
         Hos Spotter tror vi på at træning bringer folk sammen. Om du er en rutineret marathon løber eller en som bare
         løber for sjovt. Så er vores ugentlig social run, det rette sted for at komme i gang både fysisk og socialt.
       </p>
-
     </div>
-
     <div class="grid_1-1">
-      <img src="imgs/SOME/spotter_opvarmning.png" alt="spotter_opvarmning">
+      <img src="IMGS/spotter_opvarmning.png" alt="spotter_opvarmning">
       <div>
         <p>
           Når mennesker samles uden for deres sædvanlige rammer, opstår der en unik mulighed for at knytte tættere bånd.
@@ -86,29 +69,22 @@
           som en del
           af noget større.
         </p>
-
-
       </div>
-
     </div>
-
     <div class="grid_1-1">
-      <img src="imgs/SOME/spotter_and_thejuice.png" alt="juice">
+      <img src="IMGS/spotter_and_thejuice.png" alt="juice">
       <div>
         <p>
           Spotter er mere end bare en supplement forretning. Vi tror på folket i et fællesskab som vi gør i kvaliteten
           af vores egne produkter.
         </p>
-
-
       </div>
-
     </div>
   </main>
   <footer>
     <div class="flex_row_spaceBetween">
       <div class="footerContactBox flex_col">
-        <h6>Kontakt os på</h6>
+        <h1>Kontakt os på</h1>
         <div class="contactInfo">
           <p>Email: blablabla@gmail.com</p>
           <p>Telefonnummer: + 45 13 81 97 54</p>
@@ -117,9 +93,9 @@
         </div>
       </div>
       <div class="socialMedia flex_col">
-        <a href="https://www.facebook.com"><i class="facebookIcon"></i></a>
-        <a href="https://www.instagram.com"><i class="instagramIcon"></i></a>
-        <a href="https://www.tiktok.com"><i class="tiktokIcon"></i></a>
+        <a href="https://www.facebook.com" target="_blank"><i class="facebookIcon"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="instagramIcon"></i></a>
+        <a href="https://www.tiktok.com" target="_blank"><i class="tiktokIcon"></i></a>
       </div>
     </div>
     <div class="newsletterContainer flex_col_center">
@@ -134,8 +110,10 @@
     </div>
   </footer>
   <script src="JS/scripts.js"></script>
+  <!-- Siden der ikke er nogen lottie, skal de her udkommenteres
   <script src="JS/lottieeksempel.js"></script>
   <script src="JS/lottie.min.js"></script>
+  -->
 </body>
 
 </html>
